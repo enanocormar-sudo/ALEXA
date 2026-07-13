@@ -3,206 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>❤️ Te Amo Mi Princesa ❤️</title>
+<title>Te Amo Mi Princesa ❤️</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
-
-background:
-radial-gradient(circle at top,#2b001d,#120016,#000);
-
+background:linear-gradient(#050510,#12001f,#000);
 overflow:hidden;
-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+height:100vh;
 color:white;
-
 }
 
-/* Fondo de estrellas */
-
 .estrellas{
-
 position:absolute;
 width:100%;
 height:100%;
 background-image:
 radial-gradient(white 1px,transparent 1px);
-
-background-size:45px 45px;
-
-opacity:.45;
-
-animation:estrellas 25s linear infinite;
-
+background-size:40px 40px;
+animation:mover 30s linear infinite;
+opacity:.4;
 }
 
-@keyframes estrellas{
-
-from{
-transform:translateY(0px);
+@keyframes mover{
+from{transform:translateY(0);}
+to{transform:translateY(40px);}
 }
-
-to{
-transform:translateY(45px);
-}
-
-}
-
-/* Contenedor */
 
 .contenedor{
-
-position:relative;
-z-index:5;
 text-align:center;
-width:90%;
+z-index:2;
+padding:20px;
 max-width:700px;
-
 }
-
-/* Título */
 
 h1{
-
-font-size:55px;
-color:#ff4fa0;
-text-shadow:
-0 0 15px #ff0080,
-0 0 35px #ff0080;
-
-animation:latido 1.3s infinite;
-
-margin-bottom:25px;
-
+font-size:40px;
+color:#ff4d88;
+text-shadow:0 0 20px #ff0066;
+margin-bottom:20px;
+animation:latido 1.2s infinite;
 }
 
-/* Corazón */
-
 .corazon{
-
-font-size:130px;
+font-size:120px;
 cursor:pointer;
 animation:latido 1s infinite;
-filter:drop-shadow(0 0 25px red);
-
-user-select:none;
-
+filter:drop-shadow(0 0 20px red);
 }
 
 @keyframes latido{
-
-0%,100%{
-
-transform:scale(1);
-
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.15);}
 }
-
-50%{
-
-transform:scale(1.15);
-
-}
-
-}
-
-/* Botón */
-
-button{
-
-margin-top:20px;
-
-padding:18px 45px;
-
-font-size:28px;
-
-border:none;
-
-border-radius:40px;
-
-background:#ff2e74;
-
-color:white;
-
-cursor:pointer;
-
-box-shadow:0 0 25px #ff2e74;
-
-transition:.4s;
-
-}
-
-button:hover{
-
-transform:scale(1.05);
-
-background:#ff4b90;
-
-}
-
-/* Carta */
 
 #carta{
-
 display:none;
-
-margin-top:35px;
-
-padding:35px;
-
-background:rgba(20,10,25,.92);
-
-border-radius:25px;
-
-border:2px solid #ff3b86;
-
-box-shadow:0 0 30px #ff3b86;
-
-backdrop-filter:blur(12px);
-
-animation:aparecer 1.2s;
-
+margin-top:25px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:20px;
 line-height:1.8;
-
-font-size:30px;
-
+font-size:18px;
+box-shadow:0 0 20px #ff3366;
+animation:aparece 1s;
 }
 
-@keyframes aparecer{
-
+@keyframes aparece{
 from{
-
 opacity:0;
-transform:translateY(40px);
-
+transform:translateY(30px);
 }
-
 to{
-
 opacity:1;
 transform:translateY(0);
-
+}
 }
 
+button{
+margin-top:20px;
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:#ff3366;
+color:white;
+font-size:18px;
+cursor:pointer;
+box-shadow:0 0 20px #ff3366;
 }
-
-#texto{
-
-white-space:pre-line;
-
-}
-
 </style>
+
 </head>
 
 <body>
@@ -213,50 +113,51 @@ white-space:pre-line;
 
 <h1>❤️ Te Amo Mi Princesa ❤️</h1>
 
-<div class="corazon" onclick="iniciar()">
+<div class="corazon" onclick="abrirCarta()">
 ❤️
 </div>
 
-<button onclick="iniciar()">
+<button onclick="abrirCarta()">
 Abrir mi corazón ❤️
 </button>
 
 <div id="carta">
 
-<h2>Para mi princesa ✨💕</h2>
+<h2>Para mi princesa 💖</h2>
 
-<p id="texto"></p>
-</div>
+<p>
 
-<audio id="musica">
-<source src="vermilion.mp3" type="audio/mpeg">
-</audio>
+Desde que llegaste a mi vida entendí que el amor verdadero sí existe.
 
-<script>
-
-const mensaje=`Desde que llegaste a mi vida entendí que el amor verdadero sí existe.
-
-Gracias por cada sonrisa, por cada abrazo y por cada momento que compartimos.
+Gracias por cada sonrisa, por cada abrazo y por todos los momentos que compartimos.
 
 Prometo seguir eligiéndote todos los días, apoyarte y cuidarte con todo mi corazón.
 
 Eres mi paz, mi felicidad y la persona que más amo.
 
-Te amo hoy, mañana y siempre. ❤️
+<b>Te amo hoy, mañana y siempre. ❤️</b>
 
-Con todo mi amor,
+<br><br>
 
-José Luis ❤️`;
+Con todo mi amor...
 
-let iniciado=false;
+<br>
 
-function iniciar(){
+<b>José Luis ❤️</b>
 
-if(iniciado)return;
+</p>
 
-iniciado=true;
+</div>
+
+</div>
+
+<script>
+
+function abrirCarta(){
 
 document.getElementById("carta").style.display="block";
+
+}
 
 document.getElementById("musica").play();
 
