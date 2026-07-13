@@ -3,211 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>❤️ Te Amo Mi Princesa ❤️</title>
+<title>Te Amo Mi Princesa ❤️</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-
-background:
-radial-gradient(circle at top,#2b001d,#120016,#000);
-
 overflow:hidden;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
-
+background:radial-gradient(circle at top,#2a0035,#12001d,#000);
+font-family:Arial,Helvetica,sans-serif;
 }
 
-/* Fondo de estrellas */
-
-.estrellas{
-
-position:absolute;
-width:100%;
-height:100%;
-background-image:
-radial-gradient(white 1px,transparent 1px);
-
-background-size:45px 45px;
-
-opacity:.45;
-
-animation:estrellas 25s linear infinite;
-
+canvas{
+position:fixed;
+inset:0;
+z-index:0;
 }
-
-@keyframes estrellas{
-
-from{
-transform:translateY(0px);
-}
-
-to{
-transform:translateY(45px);
-}
-
-}
-
-/* Contenedor */
 
 .contenedor{
-
 position:relative;
-z-index:5;
+z-index:10;
 text-align:center;
-width:90%;
-max-width:700px;
-
+padding:20px;
 }
-
-/* Título */
 
 h1{
-
-font-size:55px;
-color:#ff4fa0;
-text-shadow:
-0 0 15px #ff0080,
-0 0 35px #ff0080;
-
-animation:latido 1.3s infinite;
-
-margin-bottom:25px;
-
+color:#ff5fa2;
+font-size:3rem;
+text-shadow:0 0 15px #ff2e88,0 0 35px #ff2e88;
+margin-bottom:20px;
 }
 
-/* Corazón */
-
 .corazon{
-
-font-size:130px;
+font-size:120px;
+animation:latido 1.2s infinite;
 cursor:pointer;
-animation:latido 1s infinite;
-filter:drop-shadow(0 0 25px red);
-
+filter:drop-shadow(0 0 25px #ff0044);
 user-select:none;
-
 }
 
 @keyframes latido{
-
-0%,100%{
-
-transform:scale(1);
-
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.18);}
 }
-
-50%{
-
-transform:scale(1.15);
-
-}
-
-}
-
-/* Botón */
 
 button{
-
-margin-top:20px;
-
-padding:18px 45px;
-
-font-size:28px;
-
+margin-top:25px;
+padding:15px 35px;
+font-size:20px;
 border:none;
-
 border-radius:40px;
-
 background:#ff2e74;
-
 color:white;
-
 cursor:pointer;
-
-box-shadow:0 0 25px #ff2e74;
-
-transition:.4s;
-
+box-shadow:0 0 20px #ff2e74;
+transition:.3s;
 }
 
 button:hover{
-
 transform:scale(1.05);
-
-background:#ff4b90;
-
 }
 
-/* Carta */
-
-#carta{
-
+#mensaje{
+margin-top:30px;
+font-size:22px;
+color:white;
 display:none;
-
-margin-top:35px;
-
-padding:35px;
-
-background:rgba(20,10,25,.92);
-
-border-radius:25px;
-
-border:2px solid #ff3b86;
-
-box-shadow:0 0 30px #ff3b86;
-
-backdrop-filter:blur(12px);
-
-animation:aparecer 1.2s;
-
-line-height:1.8;
-
-font-size:30px;
-
+animation:fade 1s;
 }
 
-@keyframes aparecer{
-
-from{
-
-opacity:0;
-transform:translateY(40px);
-
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
 }
-
-to{
-
-opacity:1;
-transform:translateY(0);
-
-}
-
-}
-
-#texto{
-
-white-space:pre-line;
-
-}
-
 </style>
+
 </head>
 
 <body>
 
-<div class="estrellas"></div>
+<canvas id="estrellas"></canvas>
 
 <div class="contenedor">
 
@@ -218,198 +101,68 @@ white-space:pre-line;
 </div>
 
 <button onclick="iniciar()">
-Abrir mi corazón ❤️
+Toca mi corazón
 </button>
 
-<div id="carta">
+<div id="mensaje">
+✨ Bienvenida mi princesa... ✨
+</div>
 
-<h2>Para mi princesa ✨💕</h2>
-
-<p id="texto"></p></div>
-
-<audio id="musica">
-<source src="vermilion.mp3" type="audio/mpeg">
-</audio>
+</div>
 
 <script>
 
-const mensaje=`Desde que llegaste a mi vida entendí que el amor verdadero sí existe.
-
-Gracias por cada sonrisa, por cada abrazo y por cada momento que compartimos.
-
-Prometo seguir eligiéndote todos los días, apoyarte y cuidarte con todo mi corazón.
-
-Eres mi paz, mi felicidad y la persona que más amo.
-
-Te amo hoy, mañana y siempre. ❤️
-
-Con todo mi amor,
-
-José Luis ❤️`;
-
-let iniciado=false;
-
 function iniciar(){
+document.getElementById("mensaje").style.display="block";
+}
 
-if(iniciado)return;
+// Fondo de estrellas
+const canvas=document.getElementById("estrellas");
+const ctx=canvas.getContext("2d");
 
-iniciado=true;
+function resize(){
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+}
+resize();
+addEventListener("resize",resize);
 
-document.getElementById("carta").style.display="block";
+const estrellas=[];
 
-document.getElementById("musica").play();
+for(let i=0;i<180;i++){
+estrellas.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+v:0.2+Math.random()*0.8
+});
+}
 
-escribir();
+function animar(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-lluviaCorazones();
+ctx.fillStyle="white";
 
-lluviaPetalos();
+for(const e of estrellas){
+
+ctx.beginPath();
+ctx.arc(e.x,e.y,e.r,0,Math.PI*2);
+ctx.fill();
+
+e.y+=e.v;
+
+if(e.y>canvas.height){
+e.y=0;
+e.x=Math.random()*canvas.width;
+}
 
 }
 
-function escribir(){
-
-let i=0;
-
-const texto=document.getElementById("texto");
-
-texto.innerHTML="";
-
-const intervalo=setInterval(()=>{
-
-texto.innerHTML+=mensaje.charAt(i);
-
-i++;
-
-if(i>=mensaje.length){
-
-clearInterval(intervalo);
-
-explosion();
+requestAnimationFrame(animar);
 
 }
 
-},40);
-
-}
-
-function explosion(){
-
-for(let i=0;i<40;i++){
-
-let c=document.createElement("div");
-
-c.innerHTML="💖";
-
-c.style.position="fixed";
-
-c.style.left="50%";
-
-c.style.top="50%";
-
-c.style.fontSize=(20+Math.random()*25)+"px";
-
-c.style.pointerEvents="none";
-
-c.style.transition="2s";
-
-document.body.appendChild(c);
-
-setTimeout(()=>{
-
-c.style.transform=`translate(${(Math.random()-0.5)*900}px,${(Math.random()-0.5)*900}px) rotate(${Math.random()*720}deg)`;
-
-c.style.opacity=0;
-
-},50);
-
-setTimeout(()=>c.remove(),2200);
-
-}
-
-}function lluviaCorazones(){
-
-setInterval(()=>{
-
-let h=document.createElement("div");
-
-h.innerHTML="💖";
-
-h.style.position="fixed";
-
-h.style.left=Math.random()*100+"vw";
-
-h.style.top="-40px";
-
-h.style.fontSize=(20+Math.random()*35)+"px";
-
-h.style.pointerEvents="none";
-
-h.style.transition="linear";
-
-document.body.appendChild(h);
-
-let duracion=5000+Math.random()*3000;
-
-setTimeout(()=>{
-
-h.style.top="110vh";
-
-h.style.opacity="0";
-
-},50);
-
-setTimeout(()=>{
-
-h.remove();
-
-},duracion);
-
-},300);
-
-}
-
-function lluviaPetalos(){
-
-setInterval(()=>{
-
-let p=document.createElement("div");
-
-p.innerHTML="🌹";
-
-p.style.position="fixed";
-
-p.style.left=Math.random()*100+"vw";
-
-p.style.top="-40px";
-
-p.style.fontSize=(18+Math.random()*20)+"px";
-
-p.style.pointerEvents="none";
-
-p.style.transition="linear";
-
-document.body.appendChild(p);
-
-let duracion=7000+Math.random()*3000;
-
-setTimeout(()=>{
-
-p.style.transform=`translate(${(Math.random()-0.5)*250}px,110vh) rotate(${Math.random()*720}deg)`;
-
-p.style.opacity="0";
-
-},50);
-
-setTimeout(()=>{
-
-p.remove();
-
-},duracion);
-
-},600);
-
-}
+animar();
 
 </script>
 
