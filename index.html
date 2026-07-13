@@ -100,84 +100,11 @@ to{opacity:1;}
 ❤️
 </div>
   <div class="galeria">
-
-<img src="img/foto1.jpg" class="foto f1">
-<img src="img/foto2.jpg" class="foto f2">
-<img src="img/foto3.jpg" class="foto f3">
-<img src="img/foto4.jpg" class="foto f4">
-<img src="img/foto5.jpg" class="foto f5">
-<img src="img/foto6.jpg" class="foto f6">
-<img src="img/foto7.jpg" class="foto f7">
-<img src="img/foto8.jpg" class="foto f8">
-<img src="img/foto9.jpg" class="foto f9">
-
-  </div>
-
-<button onclick="iniciar()">
-Toca mi corazón
-</button>
-
-<div id="mensaje">
-✨ Bienvenida mi princesa... ✨
-</div>
-
-</div>
-
-<script>
-
-function iniciar(){
-document.getElementById("mensaje").style.display="block";
-}
-
-// Fondo de estrellas
-const canvas=document.getElementById("estrellas");
-const ctx=canvas.getContext("2d");
-
-function resize(){
-canvas.width=innerWidth;
-canvas.height=innerHeight;
-}
-resize();
-addEventListener("resize",resize);
-
-const estrellas=[];
-
-for(let i=0;i<180;i++){
-estrellas.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-v:0.2+Math.random()*0.8
-});
-}
-
-function animar(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="white";
-
-for(const e of estrellas){
-
-ctx.beginPath();
-ctx.arc(e.x,e.y,e.r,0,Math.PI*2);
-ctx.fill();
-
-e.y+=e.v;
-
-if(e.y>canvas.height){
-e.y=0;
-e.x=Math.random()*canvas.width;
-}
-
-}
-
-requestAnimationFrame(animar);
-
-}
-
-animar();
-
-</script>
-
-</body>
-</html>
+<img src="IMG-20260713-WA0006.jpg" class="foto f1">
+<img src="IMG-20260713-WA0007.jpg" class="foto f2">
+<img src="IMG-20260713-WA0008.jpg" class="foto f3">
+<img src="IMG-20260713-WA0009.jpg" class="foto f4">
+<img src="IMG-20260713-WA0010.jpg" class="foto f5">
+<img src="IMG-20260713-WA0012.jpg" class="foto f6">
+<img src="IMG-20260713-WA0013.jpg" class="foto f7">
+<img src="IMG-20260713-WA0014.jpg" class="foto f8">
