@@ -1,0 +1,65 @@
+<!
+</head>
+
+<body>
+
+<audio id="musica" controls style="display:none;">
+<source src="vermilion.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>❤️ Te Amo Mi Princesa ❤️</h1>
+
+<div class="heart" onclick="iniciar()">
+❤️
+</div>
+
+<p id="mensaje">
+Mi princesa...
+
+Desde que llegaste a mi vida todo cambió para bien.
+
+Gracias por cada sonrisa, por cada abrazo y por cada momento que compartimos.
+
+Prometo seguir eligiéndote todos los días y amarte con todo mi corazón.
+
+Eres mi lugar favorito.
+
+Te amo hoy, mañana y siempre.
+
+❤️ Con todo mi amor,
+José Luis ❤️
+</p>
+
+<button onclick="iniciar()">Presiona mi corazón</button>
+
+</div>
+
+<script>
+
+function iniciar(){
+
+document.getElementById("musica").play();
+
+}
+
+for(let i=0;i<150;i++){
+
+let s=document.createElement("div");
+
+s.className="estrella";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.animationDuration=(Math.random()*5+3)+"s";
+
+document.body.appendChild(s);
+
+}
+
+</script>
+
+</body>
+
+</html>
